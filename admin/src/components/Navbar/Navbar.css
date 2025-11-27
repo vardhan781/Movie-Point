@@ -1,0 +1,140 @@
+.top-navbar {
+  height: 64px;
+  background: #0a0a0a;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #e50914;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #333;
+  border-color: #555;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 380px;
+  max-width: 90vw;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.modal-content h3 {
+  margin: 0 0 1rem;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal-content p {
+  margin: 0 0 2rem;
+  color: #aaa;
+  font-size: 15px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-logout {
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 100px;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn-cancel:hover {
+  background: #333;
+}
+
+.btn-logout {
+  background: #e50914;
+  color: white;
+  border: none;
+}
+
+.btn-logout:hover {
+  background: #c00;
+}
+
+@media (max-width: 640px) {
+  .top-navbar {
+    padding: 0 1rem;
+  }
+  .logo {
+    font-size: 22px;
+  }
+  .subtitle {
+    display: none;
+  }
+  .logout-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}

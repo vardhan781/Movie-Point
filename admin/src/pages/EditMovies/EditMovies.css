@@ -1,0 +1,237 @@
+.edit-page {
+  padding: 2.5rem 1.5rem;
+  background: #000;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.edit-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.edit-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.edit-header p {
+  color: #aaa;
+  font-size: 16px;
+}
+
+.edit-form {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #e0e0e0;
+}
+
+.req {
+  color: #e50914;
+}
+
+.field input,
+.field textarea {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+  resize: none;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #e50914;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #666;
+}
+
+.field small {
+  color: #888;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#poster {
+  display: none;
+}
+
+.upload-btn {
+  background: #222;
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  border: 2px dashed #555;
+  margin-top: 8px;
+  transition: 0.2s;
+}
+
+.upload-btn:hover {
+  background: #e50914;
+  border-color: #e50914;
+}
+
+.preview-box {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.preview-box img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.preview-label {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.submit-area {
+  text-align: center;
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 16px 48px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 220px;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.save-btn {
+  background: #e50914;
+  color: white;
+  border: none;
+}
+
+.save-btn:hover {
+  background: #c00;
+}
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #222;
+  color: white;
+  border: 1px solid #444;
+}
+
+.cancel-btn:hover {
+  background: #333;
+}
+
+.btn-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid transparent;
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.full-screen-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.netflix-spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid #1a1a1a;
+  border-top: 5px solid #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-header h2 {
+    font-size: 24px;
+  }
+  .edit-page {
+    padding: 2rem 1rem;
+  }
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}

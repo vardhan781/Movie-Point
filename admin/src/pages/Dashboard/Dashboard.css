@@ -1,0 +1,327 @@
+.dashboard {
+  padding: 2rem 1.5rem;
+  background: #000;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dash-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.count {
+  color: #888;
+  font-size: 15px;
+  margin-left: 12px;
+}
+
+.add-btn {
+  background: #e50914;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.add-btn:hover {
+  background: #c00;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: #888;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.empty-state h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 1rem 0;
+}
+
+.empty-state p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  color: #aaa;
+}
+
+.empty-state .add-btn {
+  background: #e50914;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.empty-state .add-btn:hover {
+  background: #c00;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.movie-card {
+  width: 240px;
+  background: #0f0f0f;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1a1a1a;
+}
+
+.poster-wrapper {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.kebab-menu {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+.kebab-btn {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  min-width: 110px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+.menu-dropdown.open {
+  display: block;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background: #e50914;
+}
+
+.menu-item.delete:hover {
+  background: #c00;
+}
+
+.movie-details {
+  padding: 1rem;
+}
+
+.movie-title {
+  margin: 0 0 0.4rem;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-info {
+  color: #888;
+  font-size: 13px;
+  margin: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 380px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.modal-box h3 {
+  margin: 0 0 1rem;
+  font-size: 20px;
+}
+
+.modal-box p {
+  color: #ccc;
+  margin: 0.5rem 0;
+}
+
+.warning {
+  color: #e50914;
+  font-size: 14px;
+  margin-top: 1rem;
+}
+
+.modal-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-delete {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.btn-cancel {
+  background: #222;
+  color: white;
+  border: 1px solid #444;
+}
+
+.btn-delete {
+  background: #e50914;
+  color: white;
+  border: none;
+}
+
+.btn-delete:hover {
+  background: #c00;
+}
+
+.full-screen-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.netflix-spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid #1a1a1a;
+  border-top: 5px solid #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.btn-spinner-small {
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.menu-item.delete {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 640px) {
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .movies-grid {
+    gap: 1.2rem;
+  }
+  .movie-card {
+    width: 200px;
+  }
+  .poster-wrapper {
+    height: 300px;
+  }
+}
