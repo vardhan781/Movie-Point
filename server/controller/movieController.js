@@ -144,3 +144,105 @@ export const updateMovie = async (req, res) => {
     });
   }
 };
+
+// Add Review
+export const addReview = async (req, res) => {
+  try {
+    const { id } = req.params; // movie ID
+    const { stars, comment } = req.body;
+    const userId = req.user.id;
+    const username = req.user.username;
+
+    if (!stars || !comment) {
+      return res
+        .status(400)
+        .json({ message: "Stars and comment are required" });
+    }
+
+    if (stars < 1 || stars > 5) {
+      return res.status(400).json({ message: "Stars must be between 1 and 5" });
+    }
+
+    if (comment.length > 500) {
+      return res
+        .status(400)
+        .json({ message: "Comment too long (max 500 chars)" });
+    }
+
+    const movie = await movieModel.findById(id);
+    if (!movie) return res.status(404).json({ message: "Movie not found" });
+
+    const alreadyReviewed = movie.reviews.find(
+      (r) => r.userId.toString() === userId
+    );
+
+    if (alreadyReviewed) {
+      return res.status(400).json({
+        message: "You have already reviewed this movie",
+      });
+    }
+
+    movie.reviews.push({ userId, username, stars, comment });
+
+    movie.averageRating =
+      movie.reviews.reduce((sum, r) => sum + r.stars, 0) / movie.reviews.length;
+
+    await movie.save();
+
+    res.status(201).json({ message: "Review added", reviews: movie.reviews });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+// Delete Review
+export const deleteReview = async (req, res) => {
+  try {
+    const { id, reviewId } = req.params;
+    const userId = req.user.id;
+
+    const movie = await movieModel.findById(id);
+    if (!movie) return res.status(404).json({ message: "Movie not found" });
+
+    const review = movie.reviews.id(reviewId);
+    if (!review) return res.status(404).json({ message: "Review not found" });
+
+    if (review.userId.toString() !== userId) {
+      return res
+        .status(403)
+        .json({ message: "Not authorized to delete this review" });
+    }
+
+    movie.reviews.pull(reviewId);
+
+    movie.averageRating =
+      movie.reviews.length === 0
+        ? 0
+        : movie.reviews.reduce((sum, r) => sum + r.stars, 0) /
+          movie.reviews.length;
+
+    await movie.save();
+
+    res
+      .status(200)
+      .json({ message: "Review deleted successfully", reviews: movie.reviews });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+// Get Movie Details with Reviews
+export const getMovieDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const movie = await movieModel.findById(id);
+    if (!movie) return res.status(404).json({ message: "Movie not found" });
+
+    res.status(200).json({ movie });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
