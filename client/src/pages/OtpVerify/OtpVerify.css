@@ -1,0 +1,84 @@
+.otp-container {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.otp-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.otp-container input {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #fff;
+  font-size: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.otp-container input:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 1px #e50914;
+}
+
+.otp-container input::placeholder {
+  color: #666;
+}
+
+.otp-container button {
+  background: #e50914;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.otp-container button:hover {
+  background: #c00;
+}
+
+.otp-container button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.otp-container .resend-btn {
+  background: #222;
+  border: 1px solid #444;
+}
+
+.otp-container .resend-btn:hover {
+  background: #333;
+}
+
+@media (max-width: 480px) {
+  .otp-container h2 {
+    font-size: 22px;
+  }
+
+  .otp-container input,
+  .otp-container button {
+    max-width: 320px;
+  }
+}

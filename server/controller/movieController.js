@@ -172,7 +172,7 @@ export const addReview = async (req, res) => {
     const movie = await movieModel.findById(id);
     if (!movie) return res.status(404).json({ message: "Movie not found" });
 
-    const alreadyReviewed = movie.reviews.find(
+    const alreadyReviewed = movie.reviews.some(
       (r) => r.userId.toString() === userId
     );
 
@@ -203,10 +203,15 @@ export const deleteReview = async (req, res) => {
     const userId = req.user.id;
 
     const movie = await movieModel.findById(id);
-    if (!movie) return res.status(404).json({ message: "Movie not found" });
+    if (!movie) {
+      return res.status(404).json({ message: "Movie not found" });
+    }
 
-    const review = movie.reviews.id(reviewId);
-    if (!review) return res.status(404).json({ message: "Review not found" });
+    const review = movie.reviews.find((r) => r._id.toString() === reviewId);
+
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
 
     if (review.userId.toString() !== userId) {
       return res
@@ -214,7 +219,7 @@ export const deleteReview = async (req, res) => {
         .json({ message: "Not authorized to delete this review" });
     }
 
-    movie.reviews.pull(reviewId);
+    movie.reviews = movie.reviews.filter((r) => r._id.toString() !== reviewId);
 
     movie.averageRating =
       movie.reviews.length === 0
@@ -224,12 +229,18 @@ export const deleteReview = async (req, res) => {
 
     await movie.save();
 
-    res
-      .status(200)
-      .json({ message: "Review deleted successfully", reviews: movie.reviews });
+    return res.status(200).json({
+      success: true,
+      message: "Review deleted successfully",
+      reviews: movie.reviews,
+      averageRating: movie.averageRating,
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    console.error("Delete Review Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 };
 
