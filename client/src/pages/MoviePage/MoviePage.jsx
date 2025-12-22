@@ -370,7 +370,7 @@ const MoviePage = () => {
                   onClick={handleAddReview}
                   className="submit-review-btn"
                   disabled={
-                    reviewForm.stars === 0 || reviewForm.comment.length < 50
+                    reviewForm.stars === 0 || reviewForm.comment.length < 10
                   }
                 >
                   Submit Review

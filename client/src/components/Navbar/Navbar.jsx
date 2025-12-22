@@ -36,10 +36,7 @@ const Navbar = () => {
               Logout
             </button>
           ) : (
-            <button
-              className="nav-btn login"
-              onClick={() => navigate("/auth")}
-            >
+            <button className="nav-btn login" onClick={() => navigate("/auth")}>
               <LogIn size={18} />
               Login
             </button>
@@ -54,10 +51,7 @@ const Navbar = () => {
             <p>Are you sure you want to logout?</p>
 
             <div className="modal-actions">
-              <button
-                className="cancel"
-                onClick={() => setShowModal(false)}
-              >
+              <button className="cancel" onClick={() => setShowModal(false)}>
                 Cancel
               </button>
               <button

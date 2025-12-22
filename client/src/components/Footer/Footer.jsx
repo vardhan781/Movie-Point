@@ -4,10 +4,6 @@ import { FaGithub, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import "./Footer.css";
 
 const Footer = () => {
-  const { auth } = useContext(MovieContext);
-
-  if (!auth.isAuthenticated) return null;
-
   return (
     <footer className="footer">
       <div className="footer-container">

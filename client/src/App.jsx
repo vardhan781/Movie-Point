@@ -11,12 +11,14 @@ import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
-  const hideNavbar = ["/auth", "/otp-verify"].includes(location.pathname);
+  const hideLayout =
+    location.pathname.startsWith("/auth") ||
+    location.pathname.startsWith("/otp-verify");
 
   return (
     <>
       <Toaster />
-      {!hideNavbar && <Navbar />}
+      {!hideLayout && <Navbar />}
       <Routes>
         <Route path="/auth" element={<Login />} />
         <Route path="/" element={<Home />} />
@@ -24,7 +26,7 @@ const App = () => {
         <Route path="/movie/:id" element={<MoviePage />} />
         <Route path="/watchlist" element={<WatchList />} />
       </Routes>
-      {!hideNavbar && <Footer />}
+      {!hideLayout && <Footer />}
     </>
   );
 };
