@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { MovieContext } from "../../Context/MovieContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +9,8 @@ const OtpVerify = () => {
   const { backendUrl } = useContext(MovieContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [timer, setTimer] = useState(60);
+  const [canResend, setCanResend] = useState(false);
   const emailFromState = location.state?.email || "";
 
   const [email, setEmail] = useState(emailFromState);
@@ -38,10 +40,25 @@ const OtpVerify = () => {
     try {
       await axios.post(`${backendUrl}/api/user/resend-otp`, { email });
       toast.success("OTP resent successfully!");
+      setTimer(60);
+      setCanResend(false);
     } catch (err) {
       toast.error(err.response?.data?.message || "Resend OTP failed");
     }
   };
+
+  useEffect(() => {
+    if (timer === 0) {
+      setCanResend(true);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [timer]);
 
   return (
     <div className="otp-container">
@@ -63,8 +80,12 @@ const OtpVerify = () => {
       <button onClick={handleVerify} disabled={loading}>
         {loading ? "Verifying..." : "Verify OTP"}
       </button>
-      <button onClick={handleResend} className="resend-btn">
-        Resend OTP
+      <button
+        onClick={handleResend}
+        className="resend-btn"
+        disabled={!canResend}
+      >
+        {canResend ? "Resend OTP" : `Resend OTP (${timer}s)`}
       </button>
     </div>
   );

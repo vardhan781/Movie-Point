@@ -160,9 +160,19 @@ export const loginUser = async (req, res) => {
     }
 
     if (!user.isVerified) {
-      return res
-        .status(401)
-        .json({ message: "Please verify your account first" });
+      const otp = generateOTP();
+
+      user.otp = otp;
+      user.otpExpiry = Date.now() + 10 * 60 * 1000;
+      await user.save();
+
+      await sendOTPEmail(user.email, otp);
+
+      return res.status(200).json({
+        message: "Account not verified. OTP sent to email.",
+        isVerified: false,
+        email: user.email,
+      });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -174,7 +184,7 @@ export const loginUser = async (req, res) => {
     const token = jwt.sign(
       { id: user._id, email: user.email, username: user.username },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "7d" },
     );
 
     res.status(200).json({

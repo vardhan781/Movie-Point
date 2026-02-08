@@ -68,6 +68,11 @@
   border: 1px solid #444;
 }
 
+.otp-container .resend-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .otp-container .resend-btn:hover {
   background: #333;
 }

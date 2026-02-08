@@ -33,6 +33,11 @@ export const MovieContextProvider = ({ children }) => {
         password,
       });
 
+      if (res.data.isVerified === false) {
+        setAuth((prev) => ({ ...prev, loading: false }));
+        return res.data;
+      }
+
       setAuth({
         token: res.data.token,
         user: res.data.user,
@@ -44,6 +49,8 @@ export const MovieContextProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       toast.success("Login successful 🎬");
+
+      return res.data;
     } catch (err) {
       setAuth((prev) => ({ ...prev, loading: false }));
       toast.error(err.response?.data?.message || "Login failed");
@@ -100,7 +107,7 @@ export const MovieContextProvider = ({ children }) => {
   const toggleWatchlist = async (movieId) => {
     try {
       const res = await axios.post(
-        `${backendUrl}/api/user/watchlist/toggle/${movieId}`
+        `${backendUrl}/api/user/watchlist/toggle/${movieId}`,
       );
 
       if (res.data.inWatchlist) {

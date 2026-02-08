@@ -3,6 +3,7 @@ import { User, Mail, Lock } from "lucide-react";
 import { MovieContext } from "../../Context/MovieContext";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const { login, register, auth } = useContext(MovieContext);
@@ -19,10 +20,17 @@ const Login = () => {
     e.preventDefault();
 
     if (isLogin) {
-      await login({
+      const res = await login({
         email: form.email,
         password: form.password,
       });
+
+      if (res?.isVerified === false) {
+        toast.error('Please verify your account')
+        navigate("/otp-verify", { state: { email: res.email } });
+        return;
+      }
+
       navigate("/");
     } else {
       await register(form);
