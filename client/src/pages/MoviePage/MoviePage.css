@@ -1,13 +1,9 @@
-/* MoviePage.css - Professional Version */
-
-/* ===== BASE STYLES ===== */
 .movie-page {
   background: #000;
   color: #fff;
   min-height: 100vh;
 }
 
-/* ===== LOADING STATES ===== */
 .movie-loading {
   min-height: 100vh;
   display: flex;
@@ -82,7 +78,6 @@
   }
 }
 
-/* ===== ERROR STATES ===== */
 .movie-error {
   min-height: 100vh;
   display: flex;
@@ -155,7 +150,6 @@
   background: #c00;
 }
 
-/* ===== MOVIE HERO SECTION ===== */
 .movie-hero {
   padding: 2rem 1.5rem;
   max-width: 1200px;
@@ -169,7 +163,6 @@
   align-items: start;
 }
 
-/* Poster Section */
 .poster-section {
   position: sticky;
   top: 1.5rem;
@@ -246,7 +239,6 @@
   transform: translateY(-2px);
 }
 
-/* Movie Stats */
 .movie-stats {
   display: grid;
   gap: 1rem;
@@ -287,7 +279,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Movie Details */
 .movie-details {
   padding-top: 0.5rem;
 }
@@ -327,7 +318,6 @@
   margin-bottom: 2rem;
 }
 
-/* Info Section */
 .movie-info-section {
   background: #0f0f0f;
   border: 1px solid #333;
@@ -375,7 +365,6 @@
   line-height: 1.6;
 }
 
-/* ===== REVIEWS SECTION ===== */
 .reviews-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -408,7 +397,6 @@
   margin-left: 4px;
 }
 
-/* Reviews Grid */
 .reviews-grid {
   display: grid;
   gap: 1.25rem;
@@ -427,7 +415,6 @@
   border-color: #444;
 }
 
-/* Review Header */
 .review-header {
   display: flex;
   justify-content: space-between;
@@ -495,7 +482,6 @@
   min-width: 30px;
 }
 
-/* Review Content */
 .review-content {
   color: #ccc;
   line-height: 1.6;
@@ -503,7 +489,6 @@
   font-size: 15px;
 }
 
-/* Review Actions */
 .review-actions {
   display: flex;
   justify-content: flex-end;
@@ -526,7 +511,6 @@
   color: white;
 }
 
-/* Empty Reviews */
 .empty-reviews {
   text-align: center;
   padding: 3rem 2rem;
@@ -550,12 +534,10 @@
   margin: 0;
 }
 
-/* Review Form Section */
 .review-form-section {
   margin-top: 2rem;
 }
 
-/* Add Review Form */
 .add-review-form {
   background: #0f0f0f;
   border: 1px solid #333;
@@ -689,7 +671,6 @@
   cursor: not-allowed;
 }
 
-/* Auth Prompt */
 .auth-prompt {
   background: #0f0f0f;
   border: 1px solid #333;
@@ -732,7 +713,6 @@
   background: #c00;
 }
 
-/* ===== MODAL ===== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -835,7 +815,6 @@
   background: #c00;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
   .hero-content {
     grid-template-columns: 1fr;

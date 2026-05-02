@@ -1,12 +1,8 @@
-/* Home.css - Simple Version */
-
-/* Base */
 .home-container {
   background: #000;
   min-height: 100vh;
 }
 
-/* Loading */
 .home-loading {
   min-height: 100vh;
   display: flex;
@@ -41,7 +37,6 @@
   font-weight: 500;
 }
 
-/* Error */
 .home-error {
   min-height: 100vh;
   display: flex;
@@ -65,7 +60,6 @@
   line-height: 1.5;
 }
 
-/* Grid */
 .home-grid {
   padding: 2rem;
   display: grid;
@@ -74,7 +68,6 @@
   justify-items: center;
 }
 
-/* Movie Card */
 .home-movie-card {
   width: 180px;
   background: #0f0f0f;
@@ -84,7 +77,6 @@
   cursor: pointer;
 }
 
-/* Poster Container */
 .home-poster-container {
   width: 100%;
   height: 270px;
@@ -169,7 +161,6 @@
   }
 }
 
-/* Small phones */
 @media (max-width: 360px) {
   .home-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));

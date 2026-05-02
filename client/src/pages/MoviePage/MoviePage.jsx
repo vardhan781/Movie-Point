@@ -114,8 +114,6 @@ const MoviePage = () => {
       <div className="movie-loading">
         <div className="loading-container">
           <div className="loading-spinner"></div>
-          <h3>Loading Movie Details</h3>
-          <p>Fetching information from our database...</p>
           <div className="loading-bar">
             <div className="loading-progress"></div>
           </div>

@@ -73,7 +73,9 @@
   border: 1px solid #333;
   border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
 
@@ -93,8 +95,10 @@
   margin: 0 0 0.75rem;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.4;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .toggle-btn {
