@@ -17,7 +17,8 @@ import "./MoviePage.css";
 
 const MoviePage = () => {
   const { id } = useParams();
-  const { backendUrl, auth ,watchlist, toggleWatchlist} = useContext(MovieContext);
+  const { backendUrl, auth, watchlist, toggleWatchlist } =
+    useContext(MovieContext);
   const navigate = useNavigate();
 
   const [movie, setMovie] = useState(null);
@@ -46,8 +47,7 @@ const MoviePage = () => {
     fetchMovie();
   }, [id]);
 
-  const isInWatchlist =
-    movie && watchlist.some((m) => m._id === movie._id);
+  const isInWatchlist = movie && watchlist.some((m) => m._id === movie._id);
 
   const handleWatchlist = () => {
     if (!auth.isAuthenticated) {
@@ -95,7 +95,7 @@ const MoviePage = () => {
         `${backendUrl}/api/movies/${id}/review/${deleteModal.reviewId}`,
         {
           headers: { Authorization: `Bearer ${auth.token}` },
-        }
+        },
       );
       toast.success("Review deleted!");
       fetchMovie();
@@ -114,9 +114,6 @@ const MoviePage = () => {
       <div className="movie-loading">
         <div className="loading-container">
           <div className="loading-spinner"></div>
-          <div className="loading-bar">
-            <div className="loading-progress"></div>
-          </div>
         </div>
       </div>
     );
@@ -156,15 +153,10 @@ const MoviePage = () => {
                 className="movie-poster"
               />
               <button
-                className={`watchlist-btn ${
-                  isInWatchlist ? "active" : ""
-                }`}
+                className={`watchlist-btn ${isInWatchlist ? "active" : ""}`}
                 onClick={handleWatchlist}
               >
-                <Heart
-                  size={18}
-                  fill={isInWatchlist ? "#e50914" : "none"}
-                />
+                <Heart size={18} fill={isInWatchlist ? "#e50914" : "none"} />
               </button>
               <div className="poster-overlay">
                 {movie.trailer && (
